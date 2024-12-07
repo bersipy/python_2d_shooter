@@ -1,7 +1,7 @@
 import time
 
 from player import Player
-from bullet import Bullet
+from bullets_manager import BulletsManager
 from color import WHITE
 
 import pygame
@@ -10,14 +10,14 @@ def main():
     screen = pygame.display.set_mode((1280, 720))
     pygame.display.set_caption("Minecraft")
     player = Player()
-    bullets = []
+    bullets_manager = BulletsManager()
 
     clock = pygame.time.Clock()
     last_frame = time.time()
 
     while(True):
         now = time.time()
-        dt = last_frame - now
+        dt = now - last_frame
         last_frame = now
 
         for event in pygame.event.get():
@@ -26,19 +26,15 @@ def main():
                 exit(0)
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    bullet = Bullet((player.x + player.width / 2, player.y + player.height / 2), player.get_direction())
-                    bullets.append(bullet)                    
+                    bullets_manager.spawn((player.x + player.width / 2, player.y + player.height / 2), player.get_direction())
 
-        player.move()
-        for bullet in bullets:
-            bullet.move()
+        player.update(dt)
+        bullets_manager.update(dt)
 
         screen.fill(WHITE)
 
         player.draw(screen)
-
-        for bullet in bullets:
-            bullet.draw(screen, dt)
+        bullets_manager.draw(screen)
 
         pygame.display.flip()
         clock.tick(60)

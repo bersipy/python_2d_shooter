@@ -1,4 +1,3 @@
-from direction import Direction
 from color import BLUE
 
 import pygame
@@ -6,16 +5,16 @@ import pygame
 
 class Bullet:
     radius = 15
-    ttl = 
 
     def __init__(self, starting_pos: tuple, direction: tuple) -> None:
-        self.speed = 20
+        self.speed = 10 * 100
         self.x, self.y = starting_pos
         self.dir_x, self.dir_y = direction
+        self.counter = 0
 
-    def move(self):
-        self.x += self.speed * self.dir_x
-        self.y += self.speed * self.dir_y
+    def move(self, dt):
+        self.x += self.speed * self.dir_x * dt
+        self.y += self.speed * self.dir_y * dt
 
-    def draw(self, screen, dt):
+    def draw(self, screen):
         pygame.draw.circle(screen, BLUE, (self.x, self.y), self.radius)
