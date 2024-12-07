@@ -30,6 +30,16 @@ class Player:
             self.x += self.speed * dt
             self.direction = Direction.RIGHT
 
+        # diagonal movement
+        if keys[pygame.K_UP] and keys[pygame.K_LEFT]:
+            self.direction = Direction.UP_LEFT
+        elif keys[pygame.K_UP] and keys[pygame.K_RIGHT]: 
+            self.direction = Direction.UP_RIGHT
+        elif keys[pygame.K_DOWN] and keys[pygame.K_LEFT]:
+            self.direction = Direction.DOWN_LEFT
+        elif keys[pygame.K_DOWN] and keys[pygame.K_RIGHT]:
+            self.direction = Direction.DOWN_RIGHT
+
     def get_direction(self):
         return self.direction
 
