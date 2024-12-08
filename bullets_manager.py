@@ -22,7 +22,7 @@ class BulletsManager:
     def update(self, dt: int):
         self.__clean_old_bullets()
         for (bullet, _, _) in self.bullets.values():
-            bullet.move(dt)
+            bullet.update(dt)
 
     def __clean_old_bullets(self):
         current_time = time.time()

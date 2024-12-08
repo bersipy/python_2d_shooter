@@ -1,5 +1,4 @@
 from color import BLUE
-
 import pygame
 
 
@@ -7,14 +6,19 @@ class Bullet:
     radius = 15
 
     def __init__(self, starting_pos: tuple, direction: tuple) -> None:
-        self.speed = 10 * 100
-        self.x, self.y = starting_pos
-        self.dir_x, self.dir_y = direction
+        self.speed = 12 * 100
+        self.position = pygame.math.Vector2(starting_pos)
+        self.direction = pygame.math.Vector2(direction)
+        self.direction.normalize_ip()
         self.counter = 0
 
+    def update(self, dt):
+        self.move(dt)
+
     def move(self, dt):
-        self.x += self.speed * self.dir_x * dt
-        self.y += self.speed * self.dir_y * dt
+        # Use the normalized direction vector for movement
+        movement = self.direction * self.speed * dt
+        self.position += movement
 
     def draw(self, screen):
-        pygame.draw.circle(screen, BLUE, (self.x, self.y), self.radius)
+        pygame.draw.circle(screen, BLUE, (self.position.x, self.position.y), self.radius)
