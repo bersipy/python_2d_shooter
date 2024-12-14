@@ -20,8 +20,12 @@ class Bullet:
 
     def move(self, dt):
         # Use the normalized direction vector for movement
-        movement = self.direction * self.speed * dt
+        movement : pygame.Vector2 = self.direction * self.speed * dt
         self.position += movement
+
+        self.collision_rect.x = self.position.x
+        self.collision_rect.y = self.position.y
+
 
     def draw(self, screen):
         pygame.draw.circle(screen, BLUE, (self.position.x, self.position.y), self.radius)

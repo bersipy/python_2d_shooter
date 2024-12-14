@@ -4,7 +4,8 @@ from game_state import GameState
 from entity.player import Player
 from entity.enemy import Enemy
 from manager.bullets_manager import BulletsManager
-from utils.color import WHITE
+from utils.color import WHITE, YELLOW
+from manager.collision_manager import CollisionManager
 
 import pygame
 
@@ -15,7 +16,7 @@ class TestLevel:
 
     def run(self):
         player = Player()
-        enemy = Enemy(4)
+        enemy = Enemy(2)
         bullets_manager = BulletsManager()
 
         clock = pygame.time.Clock()
@@ -37,6 +38,9 @@ class TestLevel:
             player.update(dt)
             enemy.update(dt)
             bullets_manager.update(dt)
+            
+            if CollisionManager.collideAny(enemy.collision_rect, [bullet.collision_rect for bullet in bullets_manager.bullets]):
+                enemy.color = YELLOW
 
             self.screen.fill(WHITE)
 
