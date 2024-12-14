@@ -2,9 +2,9 @@ import time
 
 from game_state import GameState
 from entity.player import Player
-from entity.enemy import Enemy
 from manager.bullets_manager import BulletsManager
-from utils.color import WHITE, YELLOW
+from manager.enemies_manager import EnemiesManager
+from utils.color import WHITE
 from manager.collision_manager import CollisionManager
 
 import pygame
@@ -16,8 +16,9 @@ class TestLevel:
 
     def run(self):
         player = Player()
-        enemy = Enemy(2)
         bullets_manager = BulletsManager()
+        enemies_manager = EnemiesManager()
+        enemies_manager.spawn()
 
         clock = pygame.time.Clock()
         last_frame = time.time()
@@ -36,18 +37,19 @@ class TestLevel:
 
             # update
             player.update(dt)
-            enemy.update(dt)
             bullets_manager.update(dt)
-            
-            if CollisionManager.collideAny(enemy.collision_rect, [bullet.collision_rect for bullet in bullets_manager.bullets]):
-                enemy.color = YELLOW
+            enemies_manager.update(dt)
+
+            for enemy in enemies_manager.enemies:
+                if CollisionManager.collideAny(enemy.collision_rect, [bullet.collision_rect for bullet in bullets_manager.bullets]):
+                    enemy.is_dead = True
 
             self.screen.fill(WHITE)
 
             # draw
             player.draw(self.screen)
             bullets_manager.draw(self.screen)
-            enemy.draw(self.screen)
+            enemies_manager.draw(self.screen)            
 
             pygame.display.flip()
             clock.tick(self.fps)

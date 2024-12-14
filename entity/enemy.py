@@ -14,6 +14,7 @@ class Enemy:
         self.__destination = self.__get_random_vector2(range(SCREEN_WIDTH, SCREEN_HEIGHT))
         self.collision_rect = pygame.Rect(self.__position.x, self.__position.y, self.size, self.size)
         self.color = RED
+        self.is_dead = False
 
     def update(self, dt):
         if self.__destination == self.__position:
@@ -43,5 +44,3 @@ class Enemy:
     def __get_random_vector2(self, range: range):
         x, y = random.randint(0, range.start), random.randint(0, range.stop)
         return pygame.math.Vector2(x, y)
-
-

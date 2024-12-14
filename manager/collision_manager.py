@@ -12,4 +12,3 @@ class CollisionManager:
     def collideAny(rect: pygame.Rect, listOfRects: List[pygame.Rect]):
         return any(map(rect.colliderect, listOfRects))
     
-    

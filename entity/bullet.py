@@ -14,6 +14,7 @@ class Bullet:
 
         size = 2 * self.radius
         self.collision_rect = pygame.Rect(self.position.x - self.radius, self.position.y - self.radius, size, size)
+        self.is_dead = False
 
     def update(self, dt):
         self.move(dt)
