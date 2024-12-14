@@ -1,9 +1,9 @@
 import time
 
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
-from player import Player
-from enemy import Enemy
-from bullets_manager import BulletsManager
+from entity.player import Player
+from entity.enemy import Enemy
+from manager.bullets_manager import BulletsManager
 from color import WHITE
 
 import pygame
@@ -12,7 +12,7 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Minecraft")
     player = Player()
-    enemy = Enemy()
+    enemy = Enemy(4)
     bullets_manager = BulletsManager()
 
     clock = pygame.time.Clock()
@@ -33,6 +33,7 @@ def main():
 
         # update
         player.update(dt)
+        enemy.update(dt)
         bullets_manager.update(dt)
 
         screen.fill(WHITE)

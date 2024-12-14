@@ -8,31 +8,37 @@ import pygame
 
 
 class Enemy:
-    def __init__(self, speed: int = 5):
+    def __init__(self, speed):
         self.speed = speed * 100
         self.width = 25
         self.height = 25
-        self.__destination_reached = False
         self.__position = self.__get_random_vector2(range(SCREEN_WIDTH, SCREEN_HEIGHT))
-        self.__destination = self.__get_random_vector2(range(0, 0))
+        self.__destination = self.__get_random_vector2(range(SCREEN_WIDTH, SCREEN_HEIGHT))
 
     def update(self, dt):
-        if self.__destination_reached:
+        if self.__destination == self.__position:
             self.__destination = self.__get_random_vector2(range(SCREEN_WIDTH, SCREEN_HEIGHT))
-        
         self.__move(dt)
 
     def draw(self, screen):
         pygame.draw.rect(screen, RED, (self.__position.x, self.__position.y, self.width, self.height))
 
     def __move(self, dt):
-        x = pow(self.__position.x - self.__destination.x)
-        y = pow(self.__position.y - self.__destination.y)
-        distance = math.sqrt(x + y, 2)
+        distance = self.__destination.distance_to(self.__position)
+        distance_to_move = self.speed * dt
 
+        dx = self.__destination.x - self.__position.x
+        dy = self.__destination.y - self.__position.y
 
+        if distance <= distance_to_move:
+            self.__position = self.__destination
+        else:   
+            x = dx * distance_to_move / distance
+            y = dy * distance_to_move / distance
+            self.__position += pygame.math.Vector2(x, y)
 
     def __get_random_vector2(self, range: range):
         x, y = random.randint(0, range.start), random.randint(0, range.stop)
         return pygame.math.Vector2(x, y)
+
 

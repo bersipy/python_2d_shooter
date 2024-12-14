@@ -1,7 +1,7 @@
 import time
 from typing import Dict
 
-from bullet import Bullet
+from entity.bullet import Bullet
 from id_generator import IdGenerator
 
 
