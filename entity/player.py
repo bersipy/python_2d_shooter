@@ -1,5 +1,5 @@
-from direction import Direction 
-from color import BLUE
+from utils.direction import Direction 
+from utils.color import BLUE
 
 import pygame
 

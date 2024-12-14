@@ -1,4 +1,4 @@
-from color import BLUE
+from utils.color import BLUE, RED
 import pygame
 
 
@@ -11,6 +11,9 @@ class Bullet:
         self.direction = pygame.math.Vector2(direction)
         self.direction.normalize_ip()
         self.counter = 0
+
+        size = 2 * self.radius
+        self.collision_rect = pygame.Rect(self.position.x - self.radius, self.position.y - self.radius, size, size)
 
     def update(self, dt):
         self.move(dt)

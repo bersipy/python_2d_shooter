@@ -11,7 +11,7 @@
 - [ ] Systems
   - [ ] Spawner
     - You told the spawner what to spawn and where
-  - [ ] 
+  - [ ] Collision Manager
 
 - [ ] Draw some sprites 
   - [ ] player
