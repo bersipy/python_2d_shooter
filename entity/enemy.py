@@ -13,8 +13,11 @@ class Enemy:
         self.__position = self.__get_random_vector2(range(SCREEN_WIDTH, SCREEN_HEIGHT))
         self.__destination = self.__get_random_vector2(range(SCREEN_WIDTH, SCREEN_HEIGHT))
         self.collision_rect = pygame.Rect(self.__position.x, self.__position.y, self.size, self.size)
-        self.color = RED
         self.is_dead = False
+
+    @property
+    def position(self):
+        return (self.__position.x, self.__position.y)
 
     def update(self, dt):
         if self.__destination == self.__position:
@@ -22,7 +25,7 @@ class Enemy:
         self.__move(dt)
 
     def draw(self, screen):
-        pygame.draw.rect(screen, self.color, self.collision_rect)
+        pygame.draw.rect(screen, RED, self.collision_rect)
 
     def __move(self, dt):
         distance = self.__destination.distance_to(self.__position)

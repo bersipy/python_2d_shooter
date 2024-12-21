@@ -10,6 +10,16 @@
 - [x] Enemies Spawner
   - You told the spawner what to spawn and where
   - [x] Random enemies spawn each time the enemy dies
+- [ ] Inventory system
+  - [ ] Player has an inventory
+  - [ ] From the start, player will has 5 bullets
+  - [ ] Each time player fire, bullets number decrease
+- [ ] Loot system
+  - [ ] Ammunition boxes
+    - Spawned by probabilties on enemy kill
+    - Static (no movement)
+    - Each ammunition add 3 bullets
+- [ ] Lifes system
 - [ ] Collision Manager
 
 

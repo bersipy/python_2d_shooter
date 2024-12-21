@@ -1,5 +1,7 @@
 from utils.direction import Direction 
 from utils.color import BLUE
+from manager.inventory_manager import InventoryManager
+from items import Items
 
 import pygame
 
@@ -8,9 +10,11 @@ class Player:
     def __init__(self) -> None:
         self.__position = pygame.math.Vector2(50, 50)
         self.speed = 6 * 100
-        self.width = 50
-        self.height = 50
+        self.size = 50
         self.direction = Direction.RIGHT
+        self.inventory = InventoryManager()
+        self.inventory.add(Items.BULLET, 5)
+        self.collision_rect = pygame.Rect(self.__position.x, self.__position.y, self.size, self.size)
 
     @property
     def x(self):
@@ -29,7 +33,7 @@ class Player:
         return self.direction
 
     def draw(self, screen):
-        pygame.draw.rect(screen, BLUE, (self.__position.x, self.__position.y, self.width, self.height))
+        pygame.draw.rect(screen, BLUE, (self.__position.x, self.__position.y, self.size, self.size))
 
     def __set_direction(self, keys: dict):
         if keys[pygame.K_UP]:
@@ -60,3 +64,6 @@ class Player:
             self.__position.x -= self.speed * dt
         elif keys[pygame.K_RIGHT]:
             self.__position.x += self.speed * dt
+
+        self.collision_rect.x = self.__position.x
+        self.collision_rect.y = self.__position.y
