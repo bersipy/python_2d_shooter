@@ -1,4 +1,5 @@
 import time
+import random
 
 from game_state import GameState
 from entity.player import Player
@@ -18,7 +19,7 @@ class TestLevel:
         player = Player()
         bullets_manager = BulletsManager()
         enemies_manager = EnemiesManager()
-        enemies_manager.spawn()
+        enemies_manager.spawn(3)
 
         clock = pygame.time.Clock()
         last_frame = time.time()
@@ -40,9 +41,17 @@ class TestLevel:
             bullets_manager.update(dt)
             enemies_manager.update(dt)
 
+            someone_has_died = False
             for enemy in enemies_manager.enemies:
                 if CollisionManager.collideAny(enemy.collision_rect, [bullet.collision_rect for bullet in bullets_manager.bullets]):
                     enemy.is_dead = True
+                    someone_has_died = True
+
+            if someone_has_died:
+                probability = 0.5
+                for _ in range(5):
+                    if random.random() < probability:
+                        enemies_manager.spawn(1)
 
             self.screen.fill(WHITE)
 
@@ -53,3 +62,4 @@ class TestLevel:
 
             pygame.display.flip()
             clock.tick(self.fps)
+            print(clock.get_fps())

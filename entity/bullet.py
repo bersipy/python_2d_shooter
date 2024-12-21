@@ -1,4 +1,4 @@
-from utils.color import BLUE, RED
+from utils.color import BLUE
 import pygame
 
 
@@ -26,7 +26,6 @@ class Bullet:
 
         self.collision_rect.x = self.position.x
         self.collision_rect.y = self.position.y
-
 
     def draw(self, screen):
         pygame.draw.circle(screen, BLUE, (self.position.x, self.position.y), self.radius)

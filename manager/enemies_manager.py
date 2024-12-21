@@ -1,4 +1,3 @@
-import time
 from typing import Dict, Tuple
 
 from entity.enemy import Enemy
@@ -14,10 +13,10 @@ class EnemiesManager:
     def enemies(self):
         return self.__enemies.values()
 
-    def spawn(self):
-        _id = self.id_generator.generate()
-        enemy = Enemy(3)
-        self.__enemies[_id] = enemy
+    def spawn(self, number_to_spawn: int):
+        for _ in range(number_to_spawn):
+            _id = self.id_generator.generate()
+            self.__enemies[_id] = Enemy(3)
 
     def draw(self, screen):
         for enemy in self.__enemies.values():

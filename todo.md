@@ -6,13 +6,15 @@
     - [x] Limit the enemy movement inside screen boundary
   - [x] When the enemy has been hit by a bullet, it should be destroyed
 
+## Today
+- [x] Enemies Spawner
+  - You told the spawner what to spawn and where
+  - [x] Random enemies spawn each time the enemy dies
+- [ ] Collision Manager
+
+
+## Next times
 - [ ] Save the last player position to keep when the player stops
-
-- [ ] Systems
-  - [ ] Spawner
-    - You told the spawner what to spawn and where
-  - [ ] Collision Manager
-
 - [ ] Draw some sprites 
   - [ ] player
   - [ ] enemy
