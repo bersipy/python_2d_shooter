@@ -10,7 +10,7 @@ from manager.collision_manager import CollisionManager
 from manager.lotboxes_manager import LootboxesManager
 from utils.color import WHITE
 from items import Items
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from ui.label import Label
 
 import pygame
 
@@ -20,6 +20,7 @@ class TestLevel:
         self.fps = fps
 
     def run(self):
+        bullet_counter = Label(text="Bullets:")
         player = Player()
         bullets_manager = BulletsManager()
         enemies_manager = EnemiesManager()
@@ -32,6 +33,8 @@ class TestLevel:
         last_frame = time.time()
 
         while(True):
+            bullet_counter.update_text(f"Bullets: {player.inventory.get(Items.BULLET)}")
+
             now = time.time()
             dt = now - last_frame
             last_frame = now
@@ -41,6 +44,9 @@ class TestLevel:
                     return GameState.QUIT
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
+                        if player.inventory.get(Items.BULLET) == 0:
+                            return GameState.MAIN_MENU
+                        
                         bullets_manager.spawn((player.x + player.size / 2, player.y + player.size / 2), player.get_direction())
                         player.inventory.remove(Items.BULLET, 1)
 
@@ -79,7 +85,8 @@ class TestLevel:
             player.draw(self.screen)
             bullets_manager.draw(self.screen)
             lootboxes_manager.draw(self.screen)
-            enemies_manager.draw(self.screen)           
+            enemies_manager.draw(self.screen)    
+            bullet_counter.draw(self.screen)       
 
             # utility
             pygame.display.flip()
