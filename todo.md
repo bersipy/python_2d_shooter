@@ -6,8 +6,6 @@
     - [x] Limit the enemy movement inside screen boundary
   - [x] When the enemy has been hit by a bullet, it should be destroyed
 - [x] Collision Manager
-
-## Today
 - [x] Enemies Spawner
   - You told the spawner what to spawn and where
   - [x] Random enemies spawn each time the enemy dies
@@ -23,14 +21,17 @@
 - [x] Bullet counter label
 
 
-## Next time
-- [ ] Fix the buggy main menu
+## Today
+- [x] Fix the buggy main menu
 - [ ] Implement interactive label
   - [ ] From the main menu, go to QUIT or test level scene
 - [ ] Kill counter (with timer). 
   - The more the kill counter grows, ...(buff or money?!?!)
 - [ ] Lifes system
 - [ ] Save the last player position to keep when the player stops
+
+
+## Next time
 - [ ] Draw some sprites 
   - [ ] player
   - [ ] enemy

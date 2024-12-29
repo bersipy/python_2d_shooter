@@ -42,7 +42,11 @@ class TestLevel:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     return GameState.QUIT
+
                 if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        return GameState.QUIT
+
                     if event.key == pygame.K_SPACE:
                         if player.inventory.get(Items.BULLET) == 0:
                             return GameState.MAIN_MENU
