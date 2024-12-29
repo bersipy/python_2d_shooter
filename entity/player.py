@@ -1,5 +1,5 @@
 from utils.direction import Direction 
-from utils.color import BLUE
+from utils.color import BLACK
 from manager.inventory_manager import InventoryManager
 from items import Items
 
@@ -33,7 +33,7 @@ class Player:
         return self.direction
 
     def draw(self, screen):
-        pygame.draw.rect(screen, BLUE, (self.__position.x, self.__position.y, self.size, self.size))
+        pygame.draw.rect(screen, BLACK, (self.__position.x, self.__position.y, self.size, self.size))
 
     def __set_direction(self, keys: dict):
         if keys[pygame.K_UP]:

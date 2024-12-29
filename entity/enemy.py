@@ -1,6 +1,6 @@
 import random
 
-from utils.color import RED
+from utils.color import PINK
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
 import pygame
@@ -25,7 +25,7 @@ class Enemy:
         self.__move(dt)
 
     def draw(self, screen):
-        pygame.draw.rect(screen, RED, self.collision_rect)
+        pygame.draw.rect(screen, PINK, self.collision_rect)
 
     def __move(self, dt):
         distance = self.__destination.distance_to(self.__position)

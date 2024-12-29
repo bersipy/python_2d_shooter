@@ -1,6 +1,6 @@
 import random
 
-from utils.color import YELLOW
+from utils.color import ORANGE
 from manager.inventory_manager import InventoryManager
 from items import Items
 
@@ -16,4 +16,4 @@ class LootBox:
         self.is_looted = False
 
     def draw(self, screen):
-        pygame.draw.rect(screen, YELLOW, self.collision_rect)
+        pygame.draw.rect(screen, ORANGE, self.collision_rect)

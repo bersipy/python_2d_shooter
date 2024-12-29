@@ -11,7 +11,7 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("Minecraft")
-        self.state = GameState.MAIN_MENU
+        self.state = GameState.TEST_LEVEL
 
     def run(self):
         while True:
