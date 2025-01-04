@@ -29,8 +29,9 @@
   - [x] Fix the number of killed enemies which is not resetting
 
 ## Today
-
-- [ ] Health system
+- [ ] Shader
+  - [ ] Particle system
+- [ ] Find an alternative to the Health system
 - [ ] Fix the menu labels position with an **ui manager**
 - [ ] Create a design document (GDD)
 

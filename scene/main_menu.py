@@ -1,14 +1,12 @@
 from ui.label import Label
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
-from utils.color import WHITE
 from game_state import GameState
 
 import pygame
-
+from OpenGL.GL import GL_COLOR_BUFFER_BIT, glClear, glLoadIdentity
 
 class MainMenu:
-    def __init__(self, screen: pygame.Surface, fps: int):
-        self.screen = screen
+    def __init__(self, fps: int):
         self.fps = fps
 
     def run(self):
@@ -35,10 +33,11 @@ class MainMenu:
             lbl_play.update(mouse_pos)
             lbl_quit.update(mouse_pos)
 
-            self.screen.fill(WHITE)
+            glClear(GL_COLOR_BUFFER_BIT)
+            glLoadIdentity()
 
-            lbl_play.draw(self.screen)
-            lbl_quit.draw(self.screen)
+            lbl_play.draw()
+            lbl_quit.draw()
         
             # utility
             pygame.display.flip()

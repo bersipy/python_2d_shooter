@@ -14,9 +14,9 @@ from constants import SCREEN_WIDTH, KILLED_ENEMIES_TIMER
 
 import pygame
 
+
 class TestLevel:
-    def __init__(self, screen: pygame.Surface, fps: int):
-        self.screen = screen
+    def __init__(self, fps: int):
         self.killed_enemies_screen = pygame.Surface((100, 100), pygame.SRCALPHA)
         self.killed_enemies_screen.set_alpha(0)
         self.fps = fps
