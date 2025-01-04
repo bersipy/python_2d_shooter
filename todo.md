@@ -20,15 +20,16 @@
     - Each ammunition add 3 bullets
 - [x] Bullet counter label
 - [x] Save the last player position to keep when the player stops
-
-
-## Today
 - [x] Fix the buggy main menu
 - [x] Implement interactive label
   - [x] From the main menu, go to QUIT or test level scene
 - [x] Kill counter (with timer). 
   - The more the kill counter grows, ...(buff or money?!?!)
-  - [ ] Fix the animation which is resetting each time it's reaching 0 as time
+  - [x] Fix the animation which is resetting each time it's reaching 0 as time
+  - [x] Fix the number of killed enemies which is not resetting
+
+## Today
+
 - [ ] Health system
 - [ ] Fix the menu labels position with an **ui manager**
 - [ ] Create a design document (GDD)

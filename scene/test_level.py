@@ -52,6 +52,9 @@ class TestLevel:
             if t == 1:
                 killed_enemies_dt_acc = 0
 
+            if alpha == 0:
+                killed_enemies = 0
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     return GameState.QUIT
