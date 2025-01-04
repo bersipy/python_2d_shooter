@@ -30,6 +30,8 @@
 
 ## Today
 - [ ] Shader
+  - [x] Convert the main menu
+  - [ ] Convert the test level
   - [ ] Particle system
 - [ ] Find an alternative to the Health system
 - [ ] Fix the menu labels position with an **ui manager**
